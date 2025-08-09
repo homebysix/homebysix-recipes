@@ -1,5 +1,10 @@
 # FindAndReplace
 
+> [!NOTE]
+> As of AutoPkg 2.7.6, this processor is now part of AutoPkg's core library. Please update your recipes to reference the core processor. See the [AutoPkg wiki](https://github.com/autopkg/autopkg/wiki/Processor-FindAndReplace) for documentation.
+>
+> This shared processor will eventually be removed.
+
 This processor performs a find/replace on a specified environment variable. The result is saved as a new variable, `%output_string%`.
 
 ## Example
