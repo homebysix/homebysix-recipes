@@ -33,7 +33,7 @@
 		</dict>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>1.4.1</string>
+	<string>2.7.6</string>
 	<key>ParentRecipe</key>
 	<string>com.github.homebysix.pkg.GitHubCLI</string>
 	<key>Process</key>
@@ -49,7 +49,7 @@
 				<string>x86_64</string>
 			</dict>
 			<key>Processor</key>
-			<string>com.github.homebysix.FindAndReplace/FindAndReplace</string>
+			<string>FindAndReplace</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>

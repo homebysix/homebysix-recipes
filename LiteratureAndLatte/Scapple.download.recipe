@@ -14,7 +14,7 @@
 		<string>Scapple</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>0.6.1</string>
+	<string>2.7.6</string>
 	<key>Process</key>
 	<array>
 		<dict>
@@ -37,7 +37,7 @@
 				<string>https://scrivener.s3.amazonaws.com</string>
 			</dict>
 			<key>Processor</key>
-			<string>com.github.homebysix.FindAndReplace/FindAndReplace</string>
+			<string>FindAndReplace</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>

@@ -14,7 +14,7 @@
 		<string>QR Factory</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>1.0.0</string>
+	<string>2.7.6</string>
 	<key>Process</key>
 	<array>
 		<dict>
@@ -39,7 +39,7 @@
 			<key>Comment</key>
 			<string>The QR Factory Sparkle feed contains a double-encoded download URL, so we must manually fix the spaces here.</string>
 			<key>Processor</key>
-			<string>com.github.homebysix.FindAndReplace/FindAndReplace</string>
+			<string>FindAndReplace</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>

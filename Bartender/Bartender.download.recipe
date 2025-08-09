@@ -16,7 +16,7 @@ Specify which major version you want in the MAJOR_VERSION input variable. Suppor
 		<string>Bartender</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>1.0.3</string>
+	<string>2.7.6</string>
 	<key>Process</key>
 	<array>
 		<dict>
@@ -39,7 +39,7 @@ Specify which major version you want in the MAJOR_VERSION input variable. Suppor
 				<string>%20</string>
 			</dict>
 			<key>Processor</key>
-			<string>com.github.homebysix.FindAndReplace/FindAndReplace</string>
+			<string>FindAndReplace</string>
 		</dict>
 		<dict>
 			<key>Arguments</key>
