@@ -13,7 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from autopkglib import Processor  # noqa: F401
+import os
+
+from autopkglib import Processor, remove_recipe_extension  # noqa: F401
 
 __all__ = ["FindAndReplace"]
 
@@ -42,7 +44,10 @@ class FindAndReplace(Processor):
     output_variables = {
         "output_string": {
             "description": "The result of find/replace on the input string."
-        }
+        },
+        "deprecation_summary_result": {
+            "description": "Description of deprecation results."
+        },
     }
     description = __doc__
 
@@ -54,6 +59,20 @@ class FindAndReplace(Processor):
         replace = self.env["replace"]
         self.output(f'Replacing "{find}" with "{replace}" in "{input_string}".')
         self.env["output_string"] = self.env["input_string"].replace(find, replace)
+
+        # Deprecation method lifted from DeprecationWarning processor
+        warning_message = self.env.get(
+            "warning_message",
+            "### Please use the new FindAndReplace core processor in AutoPkg 2.7.6 instead of this shared processor. ###",
+        )
+        self.output(warning_message)
+        recipe_name = os.path.basename(self.env["RECIPE_PATH"])
+        recipe_name = remove_recipe_extension(recipe_name)
+        self.env["deprecation_summary_result"] = {
+            "summary_text": "The following recipes have deprecation warnings:",
+            "report_fields": ["name", "warning"],
+            "data": {"name": recipe_name, "warning": warning_message},
+        }
 
 
 if __name__ == "__main__":
