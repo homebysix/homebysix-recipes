@@ -4,6 +4,9 @@ Input:
   NAME: Gitfox
 MinimumVersion: '2.3'
 Process:
+  - Processor: DeprecationWarning
+    Arguments:
+      warning_text: 'Google Storage URL for Gitfox returns 403/404; download no longer available.'
   - Processor: URLDownloader
     Arguments:
       filename: '%NAME%.zip'
