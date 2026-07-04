@@ -18,6 +18,15 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>warning_text</key>
+				<string>Corel installportal/corel.com download URLs are unreachable (DNS lookup failed); vendor distribution system offline.</string>
+			</dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>url</key>
 				<string>%DOWNLOAD_URL%</string>
 			</dict>
