@@ -29,6 +29,11 @@ Tested values for ARCH include:
 			<dict>
 				<key>re_pattern</key>
 				<string>(sejda-desktop_[\d\.]+%ARCH%\.dmg)</string>
+				<key>request_headers</key>
+				<dict>
+					<key>User-Agent</key>
+					<string>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)</string>
+				</dict>
 				<key>result_output_var_name</key>
 				<string>filepath</string>
 				<key>url</key>
@@ -42,6 +47,11 @@ Tested values for ARCH include:
 			<dict>
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
+				<key>request_headers</key>
+				<dict>
+					<key>User-Agent</key>
+					<string>Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)</string>
+				</dict>
 				<key>url</key>
 				<string>https://downloads.sejda-cdn.com/%filepath%</string>
 			</dict>
