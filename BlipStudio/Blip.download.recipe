@@ -24,6 +24,15 @@ As of November 2025, the only UPDATE_CHANNEL that contains releases is "beta".</
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>warning_text</key>
+				<string>Blip appcast URL returns Cloudflare JS challenge HTML; Sparkle feed no longer valid.</string>
+			</dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>appcast_url</key>
 				<string>https://static.blip.net/mac/appcast.xml</string>
 				<key>update_channel</key>
