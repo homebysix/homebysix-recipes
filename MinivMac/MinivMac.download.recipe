@@ -24,6 +24,15 @@ See GryphelReleasesInfoProvider.py for description of channel, platform, and var
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>warning_text</key>
+				<string>As of July 2026, the vendor's SSL certificate has expired, causing all HTTPS connections to fail with 'SSL certificate problem: certificate has expired'. This is a vendor-side operations issue and must be resolved by the vendor before this recipe can function again.</string>
+			</dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>channel</key>
 				<string>%CHANNEL%</string>
 				<key>platform</key>
