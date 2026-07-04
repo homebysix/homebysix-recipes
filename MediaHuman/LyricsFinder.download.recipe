@@ -16,9 +16,18 @@
 		<string>Lyrics Finder</string>
 	</dict>
 	<key>MinimumVersion</key>
-	<string>1.0.0</string>
+	<string>1.1</string>
 	<key>Process</key>
 	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>warning_text</key>
+				<string>LyricsFinder vendor site (mediahuman.com) returns connection refused; service appears to be offline.</string>
+			</dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+		</dict>
 		<dict>
 			<key>Arguments</key>
 			<dict>
