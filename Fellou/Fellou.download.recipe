@@ -27,6 +27,15 @@ Tested values for ARCH include:
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>warning_text</key>
+				<string>As of July 2026, the Fellou S3 download bucket returns a 403 Forbidden for all requests due to a vendor-side bucket ACL/policy issue. The download page (fellou.ai/api/download) continues to resolve, but the actual .dmg assets on S3 are inaccessible. Until the vendor corrects their bucket permissions, this recipe cannot download and should be removed.</string>
+			</dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>re_pattern</key>
 				<string>"(https://fellou\.s3\.\S+\.amazonaws\.com/FellouPC/mac/Fellou\S+-%ARCH%\.dmg)"</string>
 				<key>result_output_var_name</key>
