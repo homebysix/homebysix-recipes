@@ -20,6 +20,15 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>warning_text</key>
+				<string>As of July 2026, Curflow ships with unsigned nested frameworks (Sparkle.framework and Sentry.framework), causing CodeSignatureVerifier to reject the app under strict verification. Gatekeeper (spctl) also rejects the app, indicating this is a genuine vendor build defect in their code-signing pipeline, not merely an AutoPkg-strictness issue.</string>
+			</dict>
+			<key>Processor</key>
+			<string>DeprecationWarning</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>appcast_url</key>
 				<string>https://curflow.app/updates/appcast.xml</string>
 			</dict>
