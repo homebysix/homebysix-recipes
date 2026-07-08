@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads and installs Cutter for macOS, a free and Open Source Reverse Engineering Platform powered by Rizin.</string>
+	<key>Identifier</key>
+	<string>com.github.homebysix.install.Cutter</string>
+	<key>Input</key>
+	<dict>
+		<key>INSTALL_DESTINATION</key>
+		<string>/Applications</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0.0</string>
+	<key>ParentRecipe</key>
+	<string>com.github.homebysix.download.Cutter</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>dmg_path</key>
+				<string>%pathname%</string>
+				<key>items_to_copy</key>
+				<array>
+					<dict>
+						<key>destination_path</key>
+						<string>%INSTALL_DESTINATION%</string>
+						<key>group</key>
+						<string>wheel</string>
+						<key>mode</key>
+						<string>0755</string>
+						<key>source_item</key>
+						<string>Cutter.app</string>
+						<key>user</key>
+						<string>root</string>
+					</dict>
+				</array>
+			</dict>
+			<key>Processor</key>
+			<string>InstallFromDMG</string>
+		</dict>
+	</array>
+</dict>
+</plist>

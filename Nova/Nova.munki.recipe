@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Nova and imports it into Munki. The postinstall/postuninstall scripts symlink Nova's bundled CLI tool to /usr/local/bin/nova.</string>
+	<key>Identifier</key>
+	<string>com.github.homebysix.munki.Nova</string>
+	<key>Input</key>
+	<dict>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps/%NAME%</string>
+		<key>NAME</key>
+		<string>Nova</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>category</key>
+			<string>Developer Tools</string>
+			<key>description</key>
+			<string>Nova is a native Mac code editor created by Panic Inc.</string>
+			<key>developer</key>
+			<string>Panic Inc</string>
+			<key>display_name</key>
+			<string>Nova</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>postinstall_script</key>
+			<string>#!/bin/bash
+
+# Command line tool source and destination paths.
+CMD_TOOL_SRC="/Applications/Nova.app/Contents/SharedSupport/nova"
+CMD_TOOL_DST="/usr/local/bin"
+
+if [[ -d "$CMD_TOOL_DST" ]]; then
+    # Remove old tool, if it exists.
+    rm -f "$CMD_TOOL_DST/nova"
+else
+    # Create destination folder, if it doesn't exist.
+    mkdir -p "$CMD_TOOL_DST"
+fi
+
+cp "$CMD_TOOL_SRC" "$CMD_TOOL_DST/nova"
+</string>
+			<key>postuninstall_script</key>
+			<string>#!/bin/bash
+rm -f "/Library/LaunchDaemons/com.panic.NovaPrivilegedHelper.plist"
+rm -f "/Library/PrivilegedHelperTools/com.panic.NovaPrivilegedHelper"
+rm -f "/usr/local/bin/nova"
+</string>
+			<key>unattended_install</key>
+			<true/>
+			<key>unattended_uninstall</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>2.3</string>
+	<key>ParentRecipe</key>
+	<string>com.github.homebysix.download.Nova</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>dmg_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%.dmg</string>
+				<key>dmg_root</key>
+				<string>%RECIPE_CACHE_DIR%/unarchived</string>
+			</dict>
+			<key>Processor</key>
+			<string>DmgCreator</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%dmg_path%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
