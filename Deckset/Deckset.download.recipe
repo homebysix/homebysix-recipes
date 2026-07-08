@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Deckset dmg. Adapted from the deprecated autopkg/zentral-recipes Deckset recipe, with thanks to Zentral.</string>
+	<key>Identifier</key>
+	<string>com.github.homebysix.download.Deckset</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Deckset</string>
+		<key>URL</key>
+		<string>https://www.deckset.com/download</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.6.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>curl_opts</key>
+				<array/>
+				<key>filename</key>
+				<string>%NAME%.dmg</string>
+				<key>url</key>
+				<string>%URL%</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%pathname%/Deckset.app</string>
+				<key>requirement</key>
+				<string>anchor apple generic and identifier "com.unsignedinteger.Deckset-Paddle" and (certificate leaf[field.1.2.840.113635.100.6.1.9] /* exists */ or certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = "287LWMYEQ7")</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+	</array>
+</dict>
+</plist>
