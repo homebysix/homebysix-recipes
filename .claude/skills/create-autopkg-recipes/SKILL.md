@@ -24,6 +24,8 @@ Scaffold recipes for a macOS app following repo conventions. E2E test download+p
 
 Note: download URL / appcast / GH releases, developer, description, display name. Don't fully download — HEAD only (`curl -sIL`); let Recipe Robot fetch. Never fabricate a domain from a relative URL — resolve against the domain actually fetched.
 
+**GitHub Pages sites** (e.g. `*.github.io`) often return an HTML shell with content loaded via JS. For these, a full `curl` against the page is fine — also check the sibling GitHub repo's releases with `gh` (`gh release list -R <owner>/<repo>`) as a shortcut for version and asset info.
+
 If it's a normal GitHub-releases / direct-URL / Sparkle app, skip straight to step 3 — don't pre-inspect.
 
 **Skip signals (ask first, don't silently build or drop):** Mac App Store-only; paid-only with no public trial DMG; TestFlight/beta-only; source-only (no prebuilt binary).
@@ -47,13 +49,14 @@ No RR installed → hand-author, modeling after a repo recipe with the same deli
 
 ## 4. Conventions
 
-- Directory = app name (or developer, if one already exists for them).
+- Directory = app name (or developer, if one already exists for them). Recipe Robot often uses the developer's display name instead of the app name — rename after RR if needed.
 - Filenames: no spaces, even if `Input/NAME` has one (e.g. `TightStudio.pkg.recipe` for app "Tight Studio").
 - Identifier: `com.github.homebysix.<type>.<App>`, no spaces.
-- Match `MinimumVersion`, `Input/NAME`, `ParentRecipe`, processor order to neighbors.
+- Match `MinimumVersion`, `Input/NAME`, `ParentRecipe`, processor order to neighbors. `MinimumVersion` should be the highest required AutoPkg version across the recipe chain — pre-commit hooks will catch mismatches.
 - Download recipe always has `CodeSignatureVerifier`. Quote `subject.OU` if it starts with a digit (`= "7D2YX5DQ6M"`) — unquoted fails at runtime despite linting fine.
-- ZIP with no appcast: `URLDownloader` → `EndOfCheckPhase` → `Unarchiver` → `CodeSignatureVerifier` → `Versioner`.
-- Munki `pkginfo`: set both `unattended_install` and `unattended_uninstall` to `true`. Write a factual, non-salesy one-line `description` (no marketing copy, no emojis, no blank placeholder) — verify against the app itself (mount DMG, check Info.plist, `strings` the binary) if unsure.
+- ZIP (no appcast): `URLDownloader` → `EndOfCheckPhase` → `Unarchiver` → `CodeSignatureVerifier` → `Versioner`.
+- ZIP (Sparkle enclosure, not DMG): also needs `Unarchiver` between `EndOfCheckPhase` and `CodeSignatureVerifier`. Inspect the enclosure URL type from the appcast before assuming DMG.
+- Munki `pkginfo`: set both `unattended_install` and `unattended_uninstall` to `true`. RR only sets `unattended_install` — manually verify both are present. Write a factual, non-salesy one-line `description` (no marketing copy, no emojis, no blank placeholder) — verify against the app itself (mount DMG, check Info.plist, `strings` the binary) if unsure.
 - Delete the app icon `.png` RR drops next to the recipes — a local scratch file, not committed.
 - `plutil -lint` every file.
 
