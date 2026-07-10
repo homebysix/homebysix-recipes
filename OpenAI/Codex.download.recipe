@@ -23,7 +23,7 @@
 				<key>filename</key>
 				<string>%NAME%.dmg</string>
 				<key>url</key>
-				<string>https://persistent.oaistatic.com/codex-app-prod/Codex.dmg</string>
+				<string>https://persistent.oaistatic.com/codex-app-prod/ChatGPT.dmg</string>
 			</dict>
 			<key>Processor</key>
 			<string>URLDownloader</string>
