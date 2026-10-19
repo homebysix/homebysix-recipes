@@ -5,7 +5,7 @@
 	<key>Comment</key>
 	<string>Created with Recipe Robot v2.5.0 (https://github.com/homebysix/recipe-robot)</string>
 	<key>Description</key>
-	<string>Downloads the latest version of Vercel Deployment Menu Bar.</string>
+	<string>Downloads the latest version of Deploylight (formerly Vercel Deployment Menu Bar).</string>
 	<key>Identifier</key>
 	<string>com.github.homebysix.download.VercelDeploymentMenuBar</string>
 	<key>Input</key>
@@ -21,7 +21,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>github_repo</key>
-				<string>andrewk17/vercel-deployment-menu-bar</string>
+				<string>andrewk17/deploylight</string>
 			</dict>
 			<key>Processor</key>
 			<string>GitHubReleasesInfoProvider</string>
@@ -55,8 +55,17 @@
 		<dict>
 			<key>Arguments</key>
 			<dict>
+				<key>pattern</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/*.app</string>
+			</dict>
+			<key>Processor</key>
+			<string>FileFinder</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
 				<key>input_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/Vercel Deployment Menu Bar.app</string>
+				<string>%found_filename%</string>
 				<key>requirement</key>
 				<string>identifier "com.andrew.vercel-deployment-menu-bar" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = P44RGE92LU</string>
 			</dict>
@@ -67,7 +76,7 @@
 			<key>Arguments</key>
 			<dict>
 				<key>input_plist_path</key>
-				<string>%RECIPE_CACHE_DIR%/%NAME%/Vercel Deployment Menu Bar.app/Contents/Info.plist</string>
+				<string>%found_filename%/Contents/Info.plist</string>
 				<key>plist_version_key</key>
 				<string>CFBundleShortVersionString</string>
 			</dict>
