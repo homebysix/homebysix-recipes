@@ -5,7 +5,7 @@
 	<key>Comment</key>
 	<string>Created with Recipe Robot v2.5.0 (https://github.com/homebysix/recipe-robot)</string>
 	<key>Description</key>
-	<string>Installs the latest version of Vercel Deployment Menu Bar.</string>
+	<string>Installs the latest version of Deploylight (formerly Vercel Deployment Menu Bar).</string>
 	<key>Identifier</key>
 	<string>com.github.homebysix.install.VercelDeploymentMenuBar</string>
 	<key>Input</key>
@@ -41,7 +41,7 @@
 						<key>destination_path</key>
 						<string>/Applications</string>
 						<key>source_item</key>
-						<string>Vercel Deployment Menu Bar.app</string>
+						<string>%found_basename%</string>
 					</dict>
 				</array>
 			</dict>
